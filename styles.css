@@ -400,3 +400,51 @@ body.dark-mode .comparison {
     padding: 0 10px;
   }
 }
+
+.header-section {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.contact-form-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #374151;
+}
+
+.legal-section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  line-height: 1.8;
+}
