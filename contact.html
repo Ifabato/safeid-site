@@ -2,37 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Contact Us – SafeID</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | SafeID</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" />
+
 </head>
 <body>
-  <button id="darkToggle" class="dark-toggle">🌓 Toggle Dark Mode</button>
-
-  <main class="legal-section">
+  <main class="content">
     <h1>Contact Us</h1>
-    <p>If you have questions about your privacy, security, or our services, don’t hesitate to reach out.</p>
-    <p>Email: <a href="mailto:support@safeidapp.com">support@safeidapp.com</a></p>
-    <p>We aim to respond to all inquiries within 48 hours.</p>
+    <p>If you need help or have questions, email us at <a href="mailto:support@safeidapp.com">support@safeidapp.com</a>.</p>
   </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2025 SafeID. All rights reserved.</p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Use</a> |
-      <a href="contact.html">Contact</a>
-    </p>
-  </footer>
-
-  <script>
-    const toggle = document.getElementById('darkToggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-      toggle.textContent = document.body.classList.contains('dark-mode') ? '☀️ Toggle Light Mode' : '🌓 Toggle Dark Mode';
-    });
-  </script>
+  
 </body>
 </html>
