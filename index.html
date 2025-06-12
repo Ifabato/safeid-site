@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeID – Scam & Identity Defense</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button id="darkToggle" class="dark-toggle">🌓 Toggle Dark Mode</button>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Secure Your Identity.<br>Defend Your Future.</h1>
+      <p>Built to protect. Designed to empower. Trusted by everyday citizens and professionals alike.</p>
+      <a href="https://ifabato.gumroad.com/l/ggaau" target="_blank" class="cta-button">Join SafeID Premium</a>
+    </div>
+  </header>
+
+  <section class="mission fade-in">
+    <h2>Mission First, Always.</h2>
+    <p>SafeID is dedicated to protecting individuals from online scams, fraud, and identity theft through modern tools, human support, and education.</p>
+  </section>
+
+  <section class="comparison fade-in">
+    <h2>Membership Plans</h2>
+    <table>
+      <tr><th>Features</th><th>Free</th><th>Premium</th></tr>
+      <tr><td>Weekly Scam Alerts</td><td>✔️</td><td>✔️</td></tr>
+      <tr><td>Fraud Resource Library</td><td>✔️</td><td>✔️</td></tr>
+      <tr><td>1-on-1 Email Support</td><td>❌</td><td>✔️</td></tr>
+      <tr><td>Live Chat Guidance</td><td>❌</td><td>✔️</td></tr>
+      <tr><td>Credit Freeze Coaching</td><td>❌</td><td>✔️</td></tr>
+    </table>
+    <p style="margin-top: 16px; font-size: 0.9rem; color: #555;">No commitment. Cancel anytime.</p>
+  </section>
+
+  <section class="testimonials fade-in">
+    <h2>What People Are Saying</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial">
+        <p>“SafeID caught a fake IRS call before I gave away anything. Lifesaver.”</p>
+        <div class="author">— Jamal R., College Student</div>
+      </div>
+      <div class="testimonial">
+        <p>“My mom almost lost $1,000. I found the job scam guide in time.”</p>
+        <div class="author">— Aisha T., Daughter & Caregiver</div>
+      </div>
+      <div class="testimonial">
+        <p>“Clear info, easy to understand. Every family should have this.”</p>
+        <div class="author">— Chris D., Retired Veteran</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter fade-in">
+    <h2>Stay Scam-Aware</h2>
+    <p>Get monthly scam alerts, fraud tips, and tools. No spam. Cancel anytime.</p>
+    <form class="newsletter-form" action="#" method="POST">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <section class="scam-feed fade-in">
+    <h2>Recent Scam Alerts</h2>
+    <ul class="scam-list">
+      <li>📢 <strong>New!</strong> Fake Amazon refund calls targeting seniors</li>
+      <li>⚠️ “You missed jury duty” scam reported in MD & VA</li>
+      <li>📱 iPhone 15 phishing text scam surging this week</li>
+      <li>🚨 High school students hit with scholarship grant scams</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 SafeID. All rights reserved.</p>
+    <p>Contact: support@safeidapp.com</p>
+  </footer>
+
+ <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+  });
+
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  const toggle = document.getElementById('darkToggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const storedMode = localStorage.getItem('dark-mode');
+
+  function updateToggleLabel() {
+    toggle.textContent = document.body.classList.contains('dark-mode')
+      ? '☀️ Toggle Light Mode'
+      : '🌓 Toggle Dark Mode';
+  }
+
+  if (storedMode === 'enabled' || (!storedMode && prefersDark)) {
+    document.body.classList.add('dark-mode');
+  }
+  updateToggleLabel();
+
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+    updateToggleLabel();
+  });
+</script>
+
+</body>
+</html>
