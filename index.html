@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
-<<body>
+<body>
   <button id="darkToggle" class="dark-toggle">🌓 Toggle Dark Mode</button>
 
   <header class="hero">
@@ -88,10 +88,36 @@
   </footer>
 
  <script>
+
   window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
+
+    const toggle = document.getElementById('darkToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedMode = localStorage.getItem('dark-mode');
+
+    // Enable dark mode if preferred or previously saved
+    if (storedMode === 'enabled' || (!storedMode && prefersDark)) {
+      document.body.classList.add('dark-mode');
+    }
+
+    function updateToggleLabel() {
+      toggle.textContent = document.body.classList.contains('dark-mode')
+        ? '☀️ Toggle Light Mode'
+        : '🌓 Toggle Dark Mode';
+    }
+
+    updateToggleLabel();
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+      updateToggleLabel();
+    });
   });
 
+  // Fade-in animation logic
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -102,63 +128,31 @@
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  const toggle = document.getElementById('darkToggle');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const storedMode = localStorage.getItem('dark-mode');
+  // ✅ Add Formspree handling here
+  document.querySelector(".newsletter-form")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
 
-  function updateToggleLabel() {
-    toggle.textContent = document.body.classList.contains('dark-mode')
-      ? '☀️ Toggle Light Mode'
-      : '🌓 Toggle Dark Mode';
-  }
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
 
-  if (storedMode === 'enabled' || (!storedMode && prefersDark)) {
-    document.body.classList.add('dark-mode');
-  }
-  updateToggleLabel();
+    const messageEl = document.getElementById("form-response");
 
-  toggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
-    updateToggleLabel();
+    if (response.ok) {
+      form.reset();
+      form.style.display = "none";
+      messageEl.style.display = "block";
+      messageEl.textContent = "✅ Thanks for signing up!";
+    } else {
+      messageEl.style.display = "block";
+      messageEl.style.color = "red";
+      messageEl.textContent = "❌ Something went wrong. Please try again.";
+    }
   });
-
-  updateToggleLabel();
-
-toggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDark = document.body.classList.contains('dark-mode');
-  localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
-  updateToggleLabel();
-});
-
-// ✅ Add Formspree handling here
-document.querySelector(".newsletter-form")?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const formData = new FormData(form);
-  
-  const response = await fetch(form.action, {
-    method: form.method,
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  });
-
-  const messageEl = document.getElementById("form-response");
-
-  if (response.ok) {
-    form.reset();
-    form.style.display = "none";
-    messageEl.style.display = "block";
-    messageEl.textContent = "✅ Thanks for signing up!";
-  } else {
-    messageEl.style.display = "block";
-    messageEl.style.color = "red";
-    messageEl.textContent = "❌ Something went wrong. Please try again.";
-  }
-});
-
 
 </script>
 
