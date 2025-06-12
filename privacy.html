@@ -9,16 +9,24 @@
 </head>
 <body>
   <button id="darkToggle" class="dark-toggle">🌓 Toggle Dark Mode</button>
-  <section class="legal-section">
+
+  <main class="legal-section">
     <h1>Privacy Policy</h1>
     <p>Last updated: June 12, 2025</p>
+    <p>SafeID values your privacy. We only collect the information you choose to provide, such as your name and email for newsletter signups or service updates.</p>
+    <p>We do not sell, rent, or share your information with third parties. All data is stored securely. You may unsubscribe at any time via the link in our emails or by contacting us.</p>
+    <p>For privacy questions, contact us via <a href="contact.html">our contact page</a>.</p>
+  </main>
 
-    <p>SafeID is committed to protecting your privacy. We only collect information you voluntarily provide (such as name and email) when signing up for updates or premium access.</p>
+  <footer class="site-footer">
+    <p>&copy; 2025 SafeID. All rights reserved.</p>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
 
-    <p>We do not sell, rent, or share your personal information. All data is stored securely, and you may unsubscribe at any time.</p>
-
-    <p>For any privacy-related questions, please contact us through our <a href="contact.html">Contact Page</a>.</p>
-  </section>
   <script>
     const toggle = document.getElementById('darkToggle');
     toggle.addEventListener('click', () => {
